@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample HTML Page with Script</title>
+</head>
+<body>
+    
+    
+    <!-- A script tag to include JavaScript code -->
+    <script>
+        window.onload = function() {
+      // Receiver window
+            console.log('onload message: ' + event.data);
+        window.addEventListener('message', function(event) {
+          console.log('message message: ' + event.data);
+          if (event.origin === 'https://danish777.github.io/app1/') {
+            // Process the incoming message
+            console.log('Received message: ' + event.data);
+          }
+      });
+};
+    </script>
+    
+   <!-- You can also include external script files -->
+   <p>Recived........</p>
+</body>
+</html>
