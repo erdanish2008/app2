@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sample HTML Page with Script</title>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+
+// It allows window to listen for a postMessage.
+    window.addEventListener("message", (event)=>{
+    console.log('tested');
+// To verify the targetOrigin matches this window's domain.
+        let txt=document.querySelector('#txtMsg');
+        txt.value=`Name is ${event.data.pName} Age is  ${event.data.pAge}` ;
+     
+    });
+function closeMe() {
+        try {
+window.close();
+        } catch (e) { console.log(e) }
+        try {
+self.close();
+        } catch (e) { console.log(e) }
+}
+    </script>
 </head>
 <body>
-    
-    
-    <!-- A script tag to include JavaScript code -->
-    <script>
-        window.onload = function() {
-      // Receiver window
-            console.log('onload message: ' + event.data);
-        window.addEventListener('message', function(event) {
-          console.log('message message: ' + event.data);
-          if (event.origin === 'https://danish777.github.io/app1/') {
-            // Process the incoming message
-            console.log('Received message: ' + event.data);
-          }
-      });
-};
-    </script>
-    
-   <!-- You can also include external script files -->
-   <p>Recived........</p>
+    <form>
+        <h1>Recipient of postMessage</h1>
+            <fieldset>
+                <input type="text" id="txtMsg" />
+                <input type="button" id="btnCloseMe" value="Close me" onclick="closeMe();" />
+            </fieldset>
+   
+    </form>
 </body>
 </html>
